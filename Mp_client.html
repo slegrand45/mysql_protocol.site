@@ -357,105 +357,13 @@ Result for a prepare command.<br>
 </div>
 
 
-<pre><code><span id="TYPEresult"><span class="keyword">type</span> <code class="type"></code>result</span> = private </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTresult.Result_set"><span class="constructor">Result_set</span></span> <span class="keyword">of</span> <code class="type">Mp_result_set_packet.result_select</code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
-Result of SELECT<br>
-</div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTresult.Result_ok"><span class="constructor">Result_ok</span></span> <span class="keyword">of</span> <code class="type"><a href="Mp_client.html#TYPEdml_dcl_result">dml_dcl_result</a></code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
-Result of INSERT, UPDATE, GRANT... statements<br>
-</div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTresult.Result_multiple"><span class="constructor">Result_multiple</span></span> <span class="keyword">of</span> <code class="type"><a href="Mp_client.html#TYPEresult">result</a> list</code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
-Result of CALL procedure<br>
-</div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
-
-<div class="info ">
-Result for a statement.<br>
-</div>
+<pre><span id="TYPEexecutable_statement"><span class="keyword">type</span> <code class="type"></code>executable_statement</span> </pre>
 
 
-<pre><code><span id="TYPEexecutable_statement"><span class="keyword">type</span> <code class="type"></code>executable_statement</span> = private </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexecutable_statement.Created_statement"><span class="constructor">Created_statement</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
-statement has been created (with create_statement_from_string)<br>
-</div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexecutable_statement.Prepared_statement"><span class="constructor">Prepared_statement</span></span> <span class="keyword">of</span> <code class="type">(string * <a href="Mp_client.html#TYPEprepare_result">prepare_result</a>)</code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
-statement has been prepared (with prepare)<br>
-</div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
-
-<div class="info ">
-Statement ready to be executed.<br>
-</div>
+<pre><span id="TYPEexecute_result"><span class="keyword">type</span> <code class="type"></code>execute_result</span> </pre>
 
 
-<pre><code><span id="TYPEexecute_result"><span class="keyword">type</span> <code class="type"></code>execute_result</span> = private </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexecute_result.Executed_statement"><span class="constructor">Executed_statement</span></span> <span class="keyword">of</span> <code class="type">(string * <a href="Mp_client.html#TYPEresult">result</a>)</code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
-simple statement (not prepared) has been executed<br>
-</div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexecute_result.Executed_prepared_statement"><span class="constructor">Executed_prepared_statement</span></span> <span class="keyword">of</span> <code class="type">(string * <a href="Mp_client.html#TYPEprepare_result">prepare_result</a> * <a href="Mp_client.html#TYPEresult">result</a>)</code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
-prepared statement with no cursor (no fetch) has been executed<br>
-</div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexecute_result.Executed_prepared_statement_with_cursor"><span class="constructor">Executed_prepared_statement_with_cursor</span></span> <span class="keyword">of</span> <code class="type">(string * <a href="Mp_client.html#TYPEprepare_result">prepare_result</a>)</code></code></td>
-<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
-prepared statement with cursor (fetch must be used) has been executed<br>
-</div>
-</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
-</tr></table>
-
-<div class="info ">
-Executed statement.<br>
-</div>
+<pre><span id="TYPEresult"><span class="keyword">type</span> <code class="type"></code>result</span> </pre>
 
 
 <pre><span id="VALerror_exception_to_string"><span class="keyword">val</span> error_exception_to_string</span> : <code class="type"><a href="Mp_client.html#TYPEclient_error">client_error</a> -> string</code></pre><div class="info ">
@@ -510,6 +418,14 @@ Prepare a statement.<br>
 <div class="param_info"><code class="code">connection</code> : Connection.</div>
 <div class="param_info"><code class="code">statement</code> : Executable statement.</div>
 
+<pre><span id="VALget_created_statement"><span class="keyword">val</span> get_created_statement</span> : <code class="type"><a href="Mp_client.html#TYPEexecutable_statement">executable_statement</a> -> string</code></pre><div class="info ">
+Extract the statement from an executable statement.<br>
+</div>
+
+<pre><span id="VALget_prepared_statement"><span class="keyword">val</span> get_prepared_statement</span> : <code class="type"><a href="Mp_client.html#TYPEexecutable_statement">executable_statement</a> -> string * <a href="Mp_client.html#TYPEprepare_result">prepare_result</a></code></pre><div class="info ">
+Extract the prepared statement from an executable statement.<br>
+</div>
+
 <pre><span id="VALexecute"><span class="keyword">val</span> execute</span> : <code class="type">connection:<a href="Mp_client.html#TYPEconnection">connection</a> -><br>       statement:<a href="Mp_client.html#TYPEexecutable_statement">executable_statement</a> -><br>       ?filter:((string * int) list -> <a href="Mp_data.html#TYPEt">Mp_data.t</a> list -> bool) option -><br>       ?iter:((string * int) list -> <a href="Mp_data.html#TYPEt">Mp_data.t</a> list -> unit) option -><br>       ?return_all_raw_mysql_data:bool -><br>       ?params:<a href="Mp_data.html#TYPEt">Mp_data.t</a> list -><br>       ?bind:Mp_execute.bind -><br>       ?flag:Mp_execute.flag -> unit -> <a href="Mp_client.html#TYPEexecute_result">execute_result</a></code></pre><div class="info ">
 Execute a statement (prepared or not prepared) and return the result.<br>
 </div>
@@ -526,16 +442,16 @@ Execute a statement (prepared or not prepared) and return the result.<br>
 Extract the result part from an executed result.<br>
 </div>
 
-<pre><span id="VALget_result_set"><span class="keyword">val</span> get_result_set</span> : <code class="type"><a href="Mp_client.html#TYPEexecute_result">execute_result</a> -> Mp_result_set_packet.result_select</code></pre><div class="info ">
-Extract the set part from an executed result (for SELECT result).<br>
-</div>
-
 <pre><span id="VALget_result_multiple"><span class="keyword">val</span> get_result_multiple</span> : <code class="type"><a href="Mp_client.html#TYPEexecute_result">execute_result</a> -> <a href="Mp_client.html#TYPEresult">result</a> list</code></pre><div class="info ">
 Extract the multiple part from an executed result (for CALL result).<br>
 </div>
 
-<pre><span id="VALget_result_ok"><span class="keyword">val</span> get_result_ok</span> : <code class="type"><a href="Mp_client.html#TYPEexecute_result">execute_result</a> -> <a href="Mp_client.html#TYPEdml_dcl_result">dml_dcl_result</a></code></pre><div class="info ">
-Extract the ok part from an executed result (for INSERT, UPDATE, GRANT... result).<br>
+<pre><span id="VALget_result_set"><span class="keyword">val</span> get_result_set</span> : <code class="type"><a href="Mp_client.html#TYPEresult">result</a> -> Mp_result_set_packet.result_select</code></pre><div class="info ">
+Extract the set part from a result (for SELECT result).<br>
+</div>
+
+<pre><span id="VALget_result_ok"><span class="keyword">val</span> get_result_ok</span> : <code class="type"><a href="Mp_client.html#TYPEresult">result</a> -> <a href="Mp_client.html#TYPEdml_dcl_result">dml_dcl_result</a></code></pre><div class="info ">
+Extract the ok part from a result (for INSERT, UPDATE, GRANT... result).<br>
 </div>
 
 <pre><span id="VALfetch"><span class="keyword">val</span> fetch</span> : <code class="type">connection:<a href="Mp_client.html#TYPEconnection">connection</a> -><br>       statement:<a href="Mp_client.html#TYPEexecute_result">execute_result</a> -><br>       ?nb_rows:int64 -><br>       ?filter:((string * int) list -> <a href="Mp_data.html#TYPEt">Mp_data.t</a> list -> bool) option -><br>       ?iter:((string * int) list -> <a href="Mp_data.html#TYPEt">Mp_data.t</a> list -> unit) option -><br>       ?return_all_raw_mysql_data:bool -> unit -> <a href="Mp_client.html#TYPEresult">result</a></code></pre><div class="info ">
